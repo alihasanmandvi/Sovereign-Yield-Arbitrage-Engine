@@ -1,6 +1,6 @@
 Sovereign Yield Arbitrage Engine (PKRV)
 
-Executive Summary
+📌 Executive Summary
 
 An automated quantitative pipeline designed to ingest, model, and trade the Pakistani Sovereign Yield Curve (PKRV). This engine utilizes the Nelson-Siegel-Svensson (NSS) non-linear optimization model to establish the theoretical risk-free curve and scans for localized mispricings across 11 discrete tenors.
 
@@ -28,7 +28,7 @@ Engine Convergence Rate
 
 Total Theoretical Alpha
 
-[Insert BPS from terminal] bps
+5,142 bps
 
 Execution Speed
 
@@ -38,7 +38,7 @@ Execution Speed
 
 This repository contains a full-stack algorithmic trading pipeline separated into four distinct micro-services:
 
-1. The Temporal Miner (historical_miner.py & incremental_miner.py)
+1. The Temporal Miner (historical_dataminer.py)
 
 Bypasses basic scraping limitations using a predictive, ID-based mathematical sweep. It dynamically adapts to missing files, weekends, and known CMS anomalies using an exponential search grid to guarantee data ingestion.
 
@@ -46,11 +46,11 @@ Bypasses basic scraping limitations using a predictive, ID-based mathematical sw
 
 Transforms raw, chaotic CSV logs into an institutional, backtest-ready yield matrix. It automatically pivots the data, enforces the 1M to 20Y tenor structure, and applies forward/backward-fill interpolation to heal fractured market days.
 
-3. The Live Scanner (arbitrage_scanner.py & dashboard.py)
+3. The Live Scanner (dashboard.py)
 
 The daily execution environment. Ingests today's live market data, fits the NSS parameters via SciPy's L-BFGS-B algorithm, and flags real-time BUY / SELL signals based on deviations from fair value.
 
-4. The CV Nuke: Historical Backtester (backtester.py)
+4. Historical Backtester (backtester.py)
 
 A vectorized time-machine that walks through the cleaned yield matrix day-by-day. It optimizes the curve daily, tracks signal generation, and calculates cumulative Alpha captured over the lifecycle of the dataset.
 
@@ -88,7 +88,7 @@ streamlit run dashboard.py
 
 The engine relies on the Nelson-Siegel-Svensson (NSS) model to evaluate the continuous yield curve:
 
-$y(t) = \beta_0 + \beta_1 \frac{1-e^{-t/\tau_1}}{t/\tau_1} + \beta_2 \left(\frac{1-e^{-t/\tau_1}}{t/\tau_1} - e^{-t/\tau_1}\right) + \beta_3 \left(\frac{1-e^{-t/\tau_2}}{t/\tau_2} - e^{-t/\tau_2}\right)$
+$$y(t) = \beta_0 + \beta_1 \frac{1-e^{-t/\tau_1}}{t/\tau_1} + \beta_2 \left(\frac{1-e^{-t/\tau_1}}{t/\tau_1} - e^{-t/\tau_1}\right) + \beta_3 \left(\frac{1-e^{-t/\tau_2}}{t/\tau_2} - e^{-t/\tau_2}\right)$$
 
 $\beta_0$: Long-term yield level.
 
