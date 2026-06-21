@@ -1,40 +1,36 @@
-Sovereign Yield Arbitrage Engine (PKRV)
+# Sovereign Yield Arbitrage Engine (PKRV)
 
-📌 Executive Summary
+## 📌 Executive Summary
 
 An automated quantitative pipeline designed to ingest, model, and trade the Pakistani Sovereign Yield Curve (PKRV). This engine utilizes the Nelson-Siegel-Svensson (NSS) non-linear optimization model to establish the theoretical risk-free curve and scans for localized mispricings across 11 discrete tenors.
 
 To validate the strategy, the integrated historical backtester simulates 5 years of daily market data, demonstrating quantifiable Alpha capture by systematically longing underpriced tenors and shorting overpriced tenors against the theoretical benchmark.
 
-📈 Performance Tearsheet (Backtested)
+## 📈 Performance Tearsheet (Backtested)
 
 Results based on historical simulation of the 5.0 bps Arbitrage Strategy.
 
-Metric
-
-Result
-
 Simulation Period
 
-Jan 2025 – Jun 2026
+    Jan 2025 – Jun 2026
 
 Arbitrage Threshold
 
-+/- 5.0 bps
+    +/- 5.0 bps
 
 Engine Convergence Rate
 
-> 98.0%
+    > 98.0%
 
 Total Theoretical Alpha
 
-5,142 bps
+    5,142 bps
 
 Execution Speed
 
-< 2.0 seconds
+    < 16.0 seconds
 
-🏗️ System Architecture
+## 🏗️ System Architecture
 
 This repository contains a full-stack algorithmic trading pipeline separated into four distinct micro-services:
 
@@ -54,37 +50,36 @@ The daily execution environment. Ingests today's live market data, fits the NSS 
 
 A vectorized time-machine that walks through the cleaned yield matrix day-by-day. It optimizes the curve daily, tracks signal generation, and calculates cumulative Alpha captured over the lifecycle of the dataset.
 
-🚀 Quick Start Guide
+## 🚀 Quick Start Guide
 
 Prerequisites
 
 Ensure you have Python 3.10+ installed. Install the financial libraries via:
 
-pip install -r requirements.txt
+``` pip install -r requirements.txt ```
 
 
 1. Run the Live Strategy
 
-To see today's yield curve and live arbitrage signals in the terminal:
+    To see today's yield curve and live arbitrage signals in the terminal:
 
-python arbitrage_scanner.py
-
+``` python arbitrage_scanner.py ```
 
 2. Run the Backtester
 
-To prove the historical Alpha of the model across the cleaned dataset:
+    To prove the historical Alpha of the model across the cleaned dataset:
 
-python backtester.py
+``` python backtester.py ```
 
 
 3. Launch the Dashboard
 
-To boot the live Streamlit visualization UI:
+    To boot the live Streamlit visualization UI:
 
-streamlit run dashboard.py
+``` streamlit run dashboard.py ```
 
 
-🧮 Mathematical Foundation
+## 🧮 Mathematical Foundation
 
 The engine relies on the Nelson-Siegel-Svensson (NSS) model to evaluate the continuous yield curve:
 
