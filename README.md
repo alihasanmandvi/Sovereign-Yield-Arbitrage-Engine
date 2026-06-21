@@ -1,4 +1,7 @@
+
 # Sovereign Yield Arbitrage Engine (PKRV)
+
+<img width="1920" height="1080" alt="26394519-8af3-4847-abd7-42a85c9b075f" src="https://github.com/user-attachments/assets/87684711-db4a-4c69-9266-66197e7d5e68" />
 
 ## 📌 Executive Summary
 
