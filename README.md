@@ -60,7 +60,7 @@ Prerequisites
 
 Ensure you have Python 3.10+ installed. Install the financial libraries via:
 
-```pip install -r requirements.txt```
+``` pip install -r requirements.txt ```
 
 
 1. Run the Live Strategy
