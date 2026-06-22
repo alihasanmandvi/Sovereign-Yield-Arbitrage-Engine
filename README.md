@@ -66,7 +66,7 @@ Ensure you have Python 3.10+ installed. Install the financial libraries via:
 
     To see today's yield curve and live arbitrage signals in the terminal:
 
-``` python arbitrage_scanner.py ```
+``` streamlit run dashboard.py ```
 
 2. Run the Backtester
 
@@ -74,12 +74,6 @@ Ensure you have Python 3.10+ installed. Install the financial libraries via:
 
 ``` python backtester.py ```
 
-
-3. Launch the Dashboard
-
-    To boot the live Streamlit visualization UI:
-
-``` streamlit run dashboard.py ```
 
 
 ## 🧮 Mathematical Foundation
